@@ -1,5 +1,6 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "doctest.h"
+#include "time.h"
 #include "funcs.h"
 
 TEST_CASE("Minutes Since Midnight"){
