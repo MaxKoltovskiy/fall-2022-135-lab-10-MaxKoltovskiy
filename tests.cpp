@@ -45,3 +45,12 @@ TEST_CASE("Schedule After"){
     TimeSlot result = scheduleAfter(ts, nextmovie);
     CHECK(getTimeSlot(correct).compare(getTimeSlot(result)) == 0);
 }
+TEST_CASE("Time Overlap"){
+    TimeSlot ts = {{"X", COMEDY, 90}, {10, 0}};
+    TimeSlot no_overlap = {{"Y", DRAMA, 100}, {11, 30}};
+    TimeSlot overlap = {{"Z", ROMANCE, 80}, {11, 29}};
+
+    CHECK(timeOverlap(ts, no_overlap) == false);
+    CHECK(timeOverlap(ts, overlap) == true);
+    CHECK(timeOverlap(overlap, ts) == true);
+}

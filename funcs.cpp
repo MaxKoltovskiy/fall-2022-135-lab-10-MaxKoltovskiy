@@ -55,3 +55,20 @@ TimeSlot scheduleAfter(TimeSlot ts, Movie nextMovie) {
 
     return next;
 }
+
+bool timeOverlap(TimeSlot ts1, TimeSlot ts2) {
+    TimeSlot earlier, later;
+    if(minutesUntil(ts1.startTime, ts2.startTime) < 0) {
+        earlier = ts2;
+        later = ts1;
+    }
+    else {
+        earlier = ts1; 
+        later = ts2;
+    }
+
+    if(minutesUntil(earlier.startTime, later.startTime) < earlier.movie.duration) {
+        return true;
+    }
+    return false;
+}

@@ -44,6 +44,9 @@ int main()
     
     std::cout<< "\n-----------------------------------------\n";
 
+    std::cout<< std::boolalpha;
+    std::cout<< before.movie.title<< " and "<< afternoon.movie.title<< " overlap?: "<< timeOverlap(before, afternoon) << "\n";
+    std::cout<< night.movie.title<< " and "<< after.movie.title<< " overlap?: "<< timeOverlap(night, after)<< "\n";
 
-
+    std::cout<< "\n-----------------------------------------\n";
 }
