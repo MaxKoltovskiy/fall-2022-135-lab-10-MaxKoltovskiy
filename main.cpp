@@ -14,4 +14,14 @@ int main()
 
     std::cout<< "\n-----------------------------------------\n";
 
+    Time time0 = {8, 30};
+    int add_mins = 140;
+    Time time1 = addMinutes(time0, add_mins);
+    
+    std::cout<< time1.h<< ":"<< time1.m<< " is "<< add_mins<< " minutes after "<< time0.h<< ":"<< time0.m<< "\n";
+
+    std::cout<< "\n-----------------------------------------\n";
+
+
+    
 }

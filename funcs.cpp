@@ -12,3 +12,15 @@ int minutesSinceMidnight(Time time) {
 int minutesUntil(Time earlier, Time later) {
     return (minutesSinceMidnight(later) - minutesSinceMidnight(earlier));
 }
+
+Time addMinutes(Time time0, int mins) {
+    Time time1 = time0;
+    time1.m += mins;
+
+    while(time1.m >= 60) {
+        time1.m -= 60;
+        time1.h++;
+    }
+
+    return time1;
+}
