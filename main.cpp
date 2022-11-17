@@ -34,5 +34,16 @@ int main()
     std::cout<< getTimeSlot(night)<< "\n";
     
     std::cout<< "\n-----------------------------------------\n";
+    
+    TimeSlot before = {{"Venom", ACTION, 112}, {14, 30}};
+    Movie next = {"Split", THRILLER, 117};
+    TimeSlot after = scheduleAfter(before, next);
+
+    std::cout<< "First: "<< getTimeSlot(before) << "\n";
+    std::cout<< "After: "<< getTimeSlot(after) << "\n";
+    
+    std::cout<< "\n-----------------------------------------\n";
+
+
 
 }

@@ -44,7 +44,14 @@ std::string getTimeSlot(TimeSlot ts) {
     std::string result = getMovie(ts.movie);
     Time end_time = addMinutes(ts.startTime, ts.movie.duration);
     result += " [starts at " + std::to_string(ts.startTime.h) + ":" + std::to_string(ts.startTime.m);
-    result += ", ends at " + std::to_string(end_time.h) + ":" + std::to_string(end_time.m) + "]";
+    result += ", ends by " + std::to_string(end_time.h) + ":" + std::to_string(end_time.m) + "]";
 
     return result;
+}
+
+TimeSlot scheduleAfter(TimeSlot ts, Movie nextMovie) {
+    Time start = addMinutes(ts.startTime, ts.movie.duration);
+    TimeSlot next = {nextMovie, start};
+
+    return next;
 }

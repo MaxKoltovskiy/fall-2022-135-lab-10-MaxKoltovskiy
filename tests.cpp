@@ -33,7 +33,15 @@ TEST_CASE("Get TimeSlot"){
     Movie movie2 = {"Black Panther", ACTION, 134};
     TimeSlot morning = {movie1, {9, 15}};  
     TimeSlot daytime = {movie2, {12, 15}};  
+    
+    CHECK(getTimeSlot(morning).compare("Back to the Future COMEDY (116 min) [starts at 9:15, ends by 11:11]") == 0);
+    CHECK(getTimeSlot(daytime).compare("Black Panther ACTION (134 min) [starts at 12:15, ends by 14:29]") == 0);
+}
+TEST_CASE("Schedule After"){
+    Movie nextmovie = {"Something", THRILLER, 100};
+    TimeSlot ts = {{"Other", COMEDY, 120}, {14, 10}};
 
-    CHECK(getTimeSlot(morning).compare("Back to the Future COMEDY (116 min) [starts at 9:15, ends by 11:11]"));
-    CHECK(getTimeSlot(daytime).compare("Black Panther ACTION (134 min) [starts at 12:15, ends by 14:29]"));
+    TimeSlot correct = {nextmovie, {16, 10}};
+    TimeSlot result = scheduleAfter(ts, nextmovie);
+    CHECK(getTimeSlot(correct).compare(getTimeSlot(result)) == 0);
 }
