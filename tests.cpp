@@ -1,6 +1,8 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "doctest.h"
 #include "time.h"
+#include "movie.h"
+#include "timeslot.h"
 #include "funcs.h"
 
 bool compareTimes(Time time1, Time time2) {
@@ -21,4 +23,17 @@ TEST_CASE("Minutes Until"){
 }
 TEST_CASE("Add Minutes"){
     CHECK(compareTimes(addMinutes({8, 10}, 75), {9,25} ));
+}
+TEST_CASE("Get Movie"){
+    Movie movie1 = {"Back to the Future", COMEDY, 116};
+    CHECK(getMovie(movie1) == "Back to the Future COMEDY (116 min)");
+}
+TEST_CASE("Get TimeSlot"){
+    Movie movie1 = {"Back to the Future", COMEDY, 116};
+    Movie movie2 = {"Black Panther", ACTION, 134};
+    TimeSlot morning = {movie1, {9, 15}};  
+    TimeSlot daytime = {movie2, {12, 15}};  
+
+    CHECK(getTimeSlot(morning).compare("Back to the Future COMEDY (116 min) [starts at 9:15, ends by 11:11]"));
+    CHECK(getTimeSlot(daytime).compare("Black Panther ACTION (134 min) [starts at 12:15, ends by 14:29]"));
 }

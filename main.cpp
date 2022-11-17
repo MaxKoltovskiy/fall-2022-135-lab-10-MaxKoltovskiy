@@ -1,5 +1,7 @@
 #include <iostream>
 #include "time.h"
+#include "movie.h"
+#include "timeslot.h"
 #include "funcs.h"
 
 int main() 
@@ -17,11 +19,20 @@ int main()
     Time time0 = {8, 30};
     int add_mins = 140;
     Time time1 = addMinutes(time0, add_mins);
-    
+
     std::cout<< time1.h<< ":"<< time1.m<< " is "<< add_mins<< " minutes after "<< time0.h<< ":"<< time0.m<< "\n";
 
     std::cout<< "\n-----------------------------------------\n";
 
+    Movie movie3 = {"Deadpool", ACTION, 108};
+    Movie movie4 = {"Joker",THRILLER, 122};
 
+    TimeSlot afternoon = {movie3, {13, 45}};
+    TimeSlot night = {movie4, {1, 15}};
+
+    std::cout<< getTimeSlot(afternoon)<< "\n";
+    std::cout<< getTimeSlot(night)<< "\n";
     
+    std::cout<< "\n-----------------------------------------\n";
+
 }
